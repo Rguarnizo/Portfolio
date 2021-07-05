@@ -62,8 +62,7 @@ function App() {
       
       
     }}>
-      <hemisphereLight args={[0xffeeb1, 0x080820, 1]} castShadow/>
-      <OrbitControls/>
+      <hemisphereLight args={[0xffeeb1, 0x080820, 1]} castShadow/>      
       <spotLight position={[-50, 50, 50]} args={[0xffa95c, 1]} castShadow />
       <Suspense fallback={null}>
         <LowPolyTokyo />
