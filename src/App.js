@@ -16,12 +16,13 @@ function LowPolyTokyo() {
   const { camera, scene } = useThree();
 
   useEffect(() => {
+    
 
     scene.background = new THREE.Color('#c19dc7');
 
     tokyo.scene.rotation.y = Math.PI;
-    tokyo.scene.castShadow = false;
-    tokyo.scene.receiveShadow = false;
+    tokyo.scene.castShadow = true;
+    tokyo.scene.receiveShadow = true;
 
     let tl = gsap.timeline({scrollTrigger: {
       pin: "#scene",
@@ -42,10 +43,6 @@ function LowPolyTokyo() {
       .to(camera.rotation,{y:-(Math.PI / 2)*2.2},"<");        
   },[]);
 
-  useEffect(()=>{
-    gsap.to(camera.position, { x: -15, y: 5, z: 2.5 ,duration:3});
-  },[]);
-
   return (
     <>
       <primitive object={tokyo.scene} />
@@ -58,16 +55,19 @@ function App() {
 
 
   return (
-    <Canvas camera={{ position: [-50, 0, 10] }} id={"scene"} onCreated={({ gl, scene }) => {    
-      
-      
-    }}>
-      <hemisphereLight args={[0xffeeb1, 0x080820, 1]} castShadow/>      
+    <>
+    <Canvas camera={{ position: [-50, 0, 10] }} id={"scene"}>
+      <hemisphereLight args={[0xffeeb1, 0x080820, 1]} castShadow/>
+      <OrbitControls/>
       <spotLight position={[-50, 50, 50]} args={[0xffa95c, 1]} castShadow />
       <Suspense fallback={null}>
         <LowPolyTokyo />
       </Suspense>
     </Canvas>
+    <div className="main">
+      <h1 className="font-olegos">a regular portfolio of ruben dario</h1>
+    </div>
+    </>
   );
 }
 

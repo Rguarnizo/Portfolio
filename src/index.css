@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -16,4 +17,22 @@ canvas{
   height: 100vh;
   width: 100vh;
   background-color: black;
+}
+
+.main{
+  position: absolute;
+  top: 0;
+  left:0;
+  font-family: 'Olegos';
+  font-size:xx-large;
+}
+
+
+@font-face {
+  font-family: 'Olegos';
+  src: url('./Fonts/Olegos/Olegos.woff2') format('woff2'),
+       url('./Fonts/Olegos/Olegos.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
