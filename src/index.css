@@ -21,10 +21,11 @@ canvas{
 
 .main{
   position: absolute;
-  top: 0;
-  left:0;
-  font-family: 'Olegos';
-  font-size:xx-large;
+  top: 0vh;
+  left: 0vw;
+  color: rgb(44, 33, 33);
+  font-family: 'Bagnards';
+  font-size:4vw;
 }
 
 
@@ -32,6 +33,15 @@ canvas{
   font-family: 'Olegos';
   src: url('./Fonts/Olegos/Olegos.woff2') format('woff2'),
        url('./Fonts/Olegos/Olegos.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Bagnards';
+  src: url('./Fonts/Bagnard/bagnardsans-webfont.woff2') format('woff2'),
+       url('./Fonts/Bagnard/bagnardsans-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
