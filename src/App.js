@@ -11,27 +11,27 @@ import { OrbitControls } from "@react-three/drei";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
+import Sakura from "./3DComponents/sakura";
+
 
 function LowPolyTokyo() {
-  const tokyo = useLoader(GLTFLoader, "Models/LowpolyTokyo/Test/LowPolyTokyo.gltf");
+  const tokyo = useLoader(GLTFLoader, "Models/LowpolyTokyo/Test/Test/LowPolyTokyo.gltf");
   const { camera, scene } = useThree();
   const light = useRef();
-
-  const textureLoader = new THREE.TextureLoader();
-
-			
 
 
   useEffect(() => {
  
-    tokyo.scene.position.set(0,0,0);
-    tokyo.scene.traverse( function( node ) { if ( node instanceof THREE.Object3D ) { node.castShadow = true; node.receiveShadow=true; } } );
+    tokyo.scene.position.set(0,1,0);
+    tokyo.scene.traverse( function( node ) { if ( node instanceof THREE.Mesh ) { node.castShadow = true; node.receiveShadow=true; } } );
 
-    // tokyo.scene.rotation.y = Math.PI;
+    tokyo.scene.rotation.y = -Math.PI -0.5;
 
     tokyo.scene.castShadow = true;
     tokyo.scene.receiveShadow = true;
-    // tokyo.materials["water.003"].visible= false;
+
+    scene.background = new THREE.Color("#D8A9B5");
+    
     console.log(light);
     console.log(tokyo);
 
@@ -60,10 +60,11 @@ function LowPolyTokyo() {
       .to(camera.position, { x: 1.5, y: 11, z: 8 })
       .to(camera.rotation, { y: -(Math.PI / 2) * 2.2 }, "<");
 
-      tl.fromTo(light.current.position,{x:50,y:50,z:50},{x:20,y:20,z:0},0);
+      
       
       
   }, []);
+
 
 
   return (
@@ -72,9 +73,20 @@ function LowPolyTokyo() {
       <spotLight
           ref={light}
           args={[0xffa95c,5]}
-          position={[20,20,0]}
+          position={[-30,30,-20]}
           castShadow
+          visible
         />
+      <spotLight          
+          args={[0xffa95c,0.5]}
+          position={[-30,30,20]}
+          castShadow
+          visible
+        />        
+        <Sakura position={[-4,0,-5]}  rotation={[0,Math.PI,0]}/>
+        <Sakura position={[-12,0,-8]}  rotation={[0,Math.PI/2,0]}/>
+        <Sakura position={[10,0,-11]} rotation={[0,Math.PI/2,0]}/>
+        
     </>
   );
 }
@@ -87,11 +99,12 @@ function App() {
   return (
     <>
       <Canvas camera={{ position: [-50, 0, 10] }} id={"scene"} shadows>
-        {/* <ambientLight/> */}
-        <OrbitControls/>
+        {/* <ambientLight intensity={0.3}/> */}
+        {/* <OrbitControls/> */}
         <Suspense fallback={null}>
           <LowPolyTokyo />
         </Suspense>
+        <axesHelper />
       </Canvas>
       <div className="main">
         <h1 className="font-olegos">A Regular<br/> portfolio of <br/>Rubén Darío</h1>

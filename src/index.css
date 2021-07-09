@@ -23,9 +23,9 @@ canvas{
   position: absolute;
   top: 0vh;
   left: 0vw;
-  color: rgb(44, 33, 33);
+  color: white;
   font-family: 'Bagnards';
-  font-size:4vw;
+  font-size:3vw;
 }
 
 
