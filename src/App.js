@@ -55,8 +55,8 @@ function LowPolyTokyo() {
       .to(camera.rotation, { y: -(Math.PI / 2) * 1.5 }, "<")
       .to(camera.position, { x: -0.5, y: 9, z: 2.5 })
       .to(camera.rotation, { y: -(Math.PI / 2) * 1.8 }, "<")
-      .to(camera.position, { x: 0, y: 10, z: 5 })
-      .to(camera.rotation, { y: -(Math.PI / 2) * 2 }, "<")
+      // .to(camera.position, { x: 0, y: 10, z: 5 })
+      // .to(camera.rotation, { y: -(Math.PI / 2) * 2 }, "<")
       .to(camera.position, { x: 1.5, y: 11, z: 8 })
       .to(camera.rotation, { y: -(Math.PI / 2) * 2.2 }, "<");
 
@@ -83,7 +83,7 @@ function LowPolyTokyo() {
           castShadow
           visible
         />        
-        <Sakura position={[-4,0,-5]}  rotation={[0,Math.PI,0]}/>
+        <Sakura position={[-4,0,-5]}  rotation={[0,0,0]}/>
         <Sakura position={[-12,0,-8]}  rotation={[0,Math.PI/2,0]}/>
         <Sakura position={[10,0,-11]} rotation={[0,Math.PI/2,0]}/>
         
@@ -99,7 +99,7 @@ function App() {
   return (
     <>
       <Canvas camera={{ position: [-50, 0, 10] }} id={"scene"} shadows>
-        {/* <ambientLight intensity={0.3}/> */}
+        <ambientLight intensity={0.3}/>
         {/* <OrbitControls/> */}
         <Suspense fallback={null}>
           <LowPolyTokyo />
