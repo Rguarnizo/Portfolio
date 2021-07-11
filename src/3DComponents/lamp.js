@@ -28,7 +28,7 @@ export default function Lamp(props) {
           </group>
         </group>
       </group>
-      <pointLight {...props} position={[-4,7,-4]} intensity={0.1} color={"#f4e98c"}/>
+      <pointLight {...props} position={[-4,7,-4]} intensity={0.1} color={"#ffAD00"}/>
     </group>
     
   )

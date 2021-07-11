@@ -30,7 +30,7 @@ function LowPolyTokyo() {
     tokyo.scene.castShadow = true;
     tokyo.scene.receiveShadow = true;
 
-    scene.background = new THREE.Color("#D8A9B5");
+    scene.background = new THREE.Color("#000000");
     
     console.log(light);
     console.log(tokyo);
