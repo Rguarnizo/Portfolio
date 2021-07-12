@@ -14,7 +14,7 @@ export default function Lamp(props) {
   const { nodes, materials } = useGLTF('Models/Lamp/scene.gltf');
 
   useEffect(()=>{
-    console.log(group)
+    console.log(group);
   })
 
   return (
@@ -28,7 +28,7 @@ export default function Lamp(props) {
           </group>
         </group>
       </group>
-      <pointLight {...props} position={[-4,7,-4]} intensity={0.1} color={"#ffAD00"}/>
+      <pointLight {...props} position={[-4,7,-4]} intensity={0.1} color={"#ffffff"}/>
     </group>
     
   )

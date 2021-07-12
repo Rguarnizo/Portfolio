@@ -12,7 +12,8 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import Sakura from "./3DComponents/sakura";
-import Lamp from "./3DComponents/lamp"
+import Lamp from "./3DComponents/lamp";
+import Text from "./3DComponents/text";
 
 function LowPolyTokyo() {
   const tokyo = useLoader(GLTFLoader, "Models/LowpolyTokyo/Test/Test/LowPolyTokyo.gltf");
@@ -105,11 +106,14 @@ function App() {
     <>
       <Canvas camera={{ position: [-50, 0, 10] }} id={"scene"} shadows>
         {/* <ambientLight intensity={0.3}/> */}
-        {/* <OrbitControls/> */}
+        <OrbitControls/>
         <Suspense fallback={null}>
           <LowPolyTokyo />
+          <Text children={"ruben"} size={0.1} position={[-15,6,0]} rotation={[0,-Math.PI/2,0]}/>
+          <Text children={"portfolio"} size={0.1} position={[-15,5,0]} rotation={[0,-Math.PI/2,0]}/>
+          <Text children={"rudevio"} size={0.1} position={[-15,4,0]} rotation={[0,-Math.PI/2,0]}/>
         </Suspense>
-        
+
         <axesHelper />
       </Canvas>
       <div className="main">
