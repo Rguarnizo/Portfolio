@@ -113,11 +113,10 @@ function App() {
           <Text children={"portfolio"} size={0.1} position={[-15,5,0]} rotation={[0,-Math.PI/2,0]}/>
           <Text children={"rudevio"} size={0.1} position={[-15,4,0]} rotation={[0,-Math.PI/2,0]}/>
         </Suspense>
-
         <axesHelper />
       </Canvas>
       <div className="main">
-        <h1 className="font-olegos">A Regular<br/> portfolio of <br/>Rubén Darío</h1>
+        {/* <h1 className="font-olegos">A Regular<br/> portfolio of <br/>Rubén Darío</h1> */}
       </div>
     </>
   );
