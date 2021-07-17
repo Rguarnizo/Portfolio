@@ -28,6 +28,17 @@ canvas{
   font-size:3vw;
 }
 
+.tokyo-pin{
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 500vh;
+}
+
+.relative{
+  position: relative;
+}
+
 
 @font-face {
   font-family: 'Olegos';

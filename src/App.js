@@ -106,18 +106,23 @@ function App() {
     <>
       <Canvas camera={{ position: [-50, 0, 10] }} id={"scene"} shadows>
         {/* <ambientLight intensity={0.3}/> */}
-        <OrbitControls/>
+        {/* <OrbitControls/> */}
         <Suspense fallback={null}>
           <LowPolyTokyo />
-          <Text children={"ruben"} size={0.1} position={[-15,6,0]} rotation={[0,-Math.PI/2,0]}/>
-          <Text children={"portfolio"} size={0.1} position={[-15,5,0]} rotation={[0,-Math.PI/2,0]}/>
-          <Text children={"rudevio"} size={0.1} position={[-15,4,0]} rotation={[0,-Math.PI/2,0]}/>
+          <Text children={"ruben dario 忠"} size={0.05} position={[-13,5,0.2]} rotation={[0,-Math.PI/2+0.2,0]}/>          
+          <Text children={"rudevio more"} size={0.05} position={[-13,4,0.2]} rotation={[0,-Math.PI/2+0.2,0]}/>
         </Suspense>
         <axesHelper />
       </Canvas>
-      <div className="main">
-        {/* <h1 className="font-olegos">A Regular<br/> portfolio of <br/>Rubén Darío</h1> */}
-      </div>
+      
+    
+      {/* <div className="main">
+        <div className="tokyo-pin">
+          <h1>Tokyo pin</h1>
+        </div>
+        <h1 className="font-olegos">A Regular<br/> portfolio of <br/>Rubén Darío</h1>
+      </div> */}
+    
     </>
   );
 }
