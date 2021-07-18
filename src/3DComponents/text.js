@@ -14,11 +14,6 @@ export default function Text({ children, vAlign = 'center', hAlign = 'center', s
       console.log(mesh);
   })
 
-  useFrame(() =>{
-    mesh.current.rotation.x += 0.01;
-    mesh.current.rotation.y += 0.01;
-  })
-
   return (
     <group ref={mesh} {...props} scale={[0.1 * size, 0.1 * size, 0.1*size]}>
       <mesh>
