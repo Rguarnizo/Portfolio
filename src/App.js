@@ -97,6 +97,63 @@ function LowPolyTokyo() {
   );
 }
 
+function Title(){
+
+  const [showLetters, setshowLetters] = React.useState("Ruben Dario");
+  const [actualIndex, setactualIndex] = React.useState(0);
+
+  const wait = async (ms) => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  };
+
+  const fillWord = async (indexDel) => {
+  for(const i in indexDel){
+    setshowLetters((state) => {
+      let newState = state.split("");
+      console.log(newState)
+      newState.splice(i,1,indexDel[i]);
+      return newState.join("");
+    });
+    await wait(1000);
+    }  
+  };
+  
+
+  const deleteWord = async (indexDel) => {
+    for (const i in indexDel) {
+      setshowLetters((state) => {
+        let newState = state.split("");
+        console.log(newState);
+        newState.splice(i,1," ");
+        return newState.join("");
+      });
+      await wait(1000);
+    }
+  };
+
+  const renderWords = async () => {
+    const indexDel = {2:"b",4:"n",7:"a",8:"r"};
+    while (true) {
+      await deleteWord(indexDel);
+      await fillWord(indexDel);
+    }
+  };
+
+  useEffect(()=> {
+    renderWords(); 
+  },[])
+
+
+  return(
+  <>
+  <Text children={showLetters} size={0.05} position={[-13,5,0.2]} rotation={[0,-Math.PI/2+0.2,0]}/>          
+  {/* <Text children={showLetters} size={0.05} position={[-13,4,0.2]} rotation={[0,-Math.PI/2+0.2,0]}/> */}
+  </>
+  );
+}
+
 function App() {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -109,8 +166,7 @@ function App() {
         {/* <OrbitControls/> */}
         <Suspense fallback={null}>
           <LowPolyTokyo />
-          <Text children={"ruben dario 忠"} size={0.05} position={[-13,5,0.2]} rotation={[0,-Math.PI/2+0.2,0]}/>          
-          <Text children={"rudevio more"} size={0.05} position={[-13,4,0.2]} rotation={[0,-Math.PI/2+0.2,0]}/>
+          <Title/>
         </Suspense>
         <axesHelper />
       </Canvas>
