@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base{
+  @font-face {
+  font-family: "Magilio";
+  src: url("fonts/MagilioRegular.ttf") format("truetype");
+
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
