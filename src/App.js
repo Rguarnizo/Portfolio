@@ -1,11 +1,25 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { ReactDOM } from "react";
 import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {BsGithub} from "react-icons/bs";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const ball = document.querySelector(".circle");
+const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+const mouse = { x: pos.x, y: pos.y };
+
+const xSet = gsap.quickSetter(ball, "x", "px");
+const ySet = gsap.quickSetter(ball, "y", "px");
+
+
+
+
+
+
 
 function Torus(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -36,8 +50,12 @@ function Torus(props) {
 function App() {
   useEffect(animate);
 
+  useEffect(oneTime,[]);
+  
   return (
+    
     <div className="h-auto bg-[#fac9c3] body">
+      <div className="circle fixed w-4 h-4 border-zinc-700 border-2 rounded-full"></div> 
       <div className="h-screen w-screen absolute top-0 left-0 font-magilio hover:z-10">
         <Canvas className="h-full w-full">
           <ambientLight />
@@ -101,7 +119,7 @@ function App() {
               <div className="">I like to build whatever kind of anything.</div>
               <div className="">Here is my Github</div>
                 <a href="https://www.github.com/rguarnizo" target={"_blank"} className="flex flex-col items-center">
-                  <BsGithub className="flex flex-col items-center" size={40} />
+                  <BsGithub className="flex flex-col items-center" size={40} /> 
                 </a>
                 <div>Maybe we can build something together</div> 
             </div>
@@ -143,6 +161,31 @@ function animate() {
     scrollTrigger: { trigger: ".section2", scrub: 0.5 },
   });
 
+
+  gsap.set(".circle",{xPercent:-50,yPercent:-50})
+
+
+  console.log(ball);
+
+  // ReactDOM.findDOMNode.addEventListener("mousemove", e => {    
+  //   mouse.x = e.x;
+  //   mouse.y = e.y;  
+  // });
+
+  // gsap.ticker.add(() => {
+
+  //  adjust speed for higher refresh monitors  
+  //   pos.x += (mouse.x - pos.x);
+  //   pos.y += (mouse.y - pos.y);
+  //   xSet(pos.x);
+  //   ySet(pos.y);
+  // });
+
+
+}
+
+function oneTime(){
+  
 }
 
 export default App;
