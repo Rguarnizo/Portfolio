@@ -3,6 +3,7 @@ import gsap from "gsap";
 import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas, useFrame } from "@react-three/fiber";
+import {BsGithub} from "react-icons/bs";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,8 +96,15 @@ function App() {
         <div className="rounded-lg  w-[80%]  my-auto bg-white shadow-lg">
           <div className="-translate-y-20 mx-auto h-[250px] w-[250px] rounded-full bg-black shadow-xl "></div>
           
-            <div className="font-magilio mx-10 text-2xl my-10 text-center">Hi, I'am <b className="text-4xl">Rubén Darío </b> a Developer resident in Colombia 🇨🇴</div>
-            <div className="font-magilio mx-10 text-2xl my-10 text-center">I like to build whatever kind of anything.</div>
+            <div className="font-magilio mx-10 text-2xl my-10 text-center space-y-10">
+              <div className="">Hi, I'am <b className="text-4xl">Rubén Darío </b> a Developer resident in Colombia 🇨🇴</div>
+              <div className="">I like to build whatever kind of anything.</div>
+              <div className="">Here is my Github</div>
+                <a href="https://www.github.com/rguarnizo" target={"_blank"} className="flex flex-col items-center">
+                  <BsGithub className="flex flex-col items-center" size={40} />
+                </a>
+                <div>Maybe we can build something together</div> 
+            </div>
             
 
           
