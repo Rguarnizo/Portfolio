@@ -1,25 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ReactDOM } from "react";
+import { ReactDOM } from "react-dom";
 import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {BsGithub} from "react-icons/bs";
+import { BsGithub,BsLinkedin,BsMedium} from "react-icons/bs";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const ball = document.querySelector(".circle");
-const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-const mouse = { x: pos.x, y: pos.y };
-
-const xSet = gsap.quickSetter(ball, "x", "px");
-const ySet = gsap.quickSetter(ball, "y", "px");
-
-
-
-
-
-
 
 function Torus(props) {
   // This reference gives us direct access to the THREE.Mesh object
@@ -50,12 +37,11 @@ function Torus(props) {
 function App() {
   useEffect(animate);
 
-  useEffect(oneTime,[]);
-  
+  useEffect(oneTime, []);
+
   return (
-    
     <div className="h-auto bg-[#fac9c3] body">
-      <div className="circle fixed w-4 h-4 border-zinc-700 border-2 rounded-full"></div> 
+      <div className="circle fixed w-8 h-8 border-zinc-700 border-2 rounded-full pointer-events-none"></div>
       <div className="h-screen w-screen absolute top-0 left-0 font-magilio hover:z-10">
         <Canvas className="h-full w-full">
           <ambientLight />
@@ -81,10 +67,7 @@ function App() {
           <div className="lines h-[10%] bg-gray-800 flex align-middle shadow-lg -z-10">
             <div className="lineup flex">
               {new Array(30).fill({ start: 0, end: 10 }).map((value) => (
-                <div
-                  id={value}
-                  className="text-[#d8e2dc] text-2xl my-auto overflow-y-hidden mx-2 font-bold whitespace-nowrap"
-                >
+                <div className="text-[#d8e2dc] text-2xl my-auto overflow-y-hidden mx-2 font-bold whitespace-nowrap">
                   ABOUT ME
                 </div>
               ))}
@@ -98,11 +81,8 @@ function App() {
           </div>
           <div className=" lines h-[10%] bg-gray-800 shadow-lg flex z-10">
             <div className="linedown flex w-[120vw] -translate-x-44">
-              {new Array(30).fill({ start: 0, end: 10 }).map((value) => (
-                <div
-                  id={value}
-                  className="text-[#d8e2dc] text-2xl my-auto mx-2 font-bold whitespace-nowrap rotate-180"
-                >
+              {new Array(30).fill({ start: 10, end: 20 }).map((value) => (
+                <div className="text-[#d8e2dc] text-2xl my-auto mx-2 font-bold whitespace-nowrap rotate-180">
                   EM TUOBA
                 </div>
               ))}
@@ -112,20 +92,33 @@ function App() {
       </div>
       <div className="my-auto flex justify-center">
         <div className="rounded-lg  w-[80%]  my-auto bg-white shadow-lg">
-          <div className="-translate-y-20 mx-auto h-[250px] w-[250px] rounded-full bg-black shadow-xl "></div>
-          
-            <div className="font-magilio mx-10 text-2xl my-10 text-center space-y-10">
-              <div className="">Hi, I'am <b className="text-4xl">Rubén Darío </b> a Developer resident in Colombia 🇨🇴</div>
-              <div className="">I like to build whatever kind of anything.</div>
-              <div className="">Here is my Github</div>
-                <a href="https://www.github.com/rguarnizo" target={"_blank"} className="flex flex-col items-center">
-                  <BsGithub className="flex flex-col items-center" size={40} /> 
-                </a>
-                <div>Maybe we can build something together</div> 
-            </div>
-            
+          <div className="-translate-y-20 mx-auto h-[250px] w-[250px] object-cover overflow-hidden rounded-full  shadow-xl  ">
+            <img src="Me.jpg" alt="" className="h-full w-auto" />
+          </div>
 
-          
+          <div className="font-magilio mx-10 text-2xl my-10 text-center space-y-4">
+            <div className="">
+              Hi, I'am <b className="text-4xl">Rubén Darío </b> a Developer
+              resident in Colombia 🇨🇴
+            </div>
+            <div className="">I like to build whatever kind of anything.</div>
+
+            <div>Maybe we can build something together</div>
+            <div className="flex justify-around">
+              <a target="_blank" href="https://www.linkedin.com/in/rudevio/" >
+                <p className="Contacts" >.Linkedin</p>
+              </a>
+              <a target="_blank" href="https://www.github.com/rguarnizo">
+                <p className="Contacts ">.Github</p>
+              </a>
+              <a target="_blank" href="https://www.medium.com/medium">
+                <p className="Contacts ">.Medium</p>
+              </a>
+            </div>
+            <BsGithub size={50} data-value="Github" className={"fixed Github"}/>
+            <BsLinkedin size={50} data-value="Linkedin" className={"fixed Linkedin"}/>
+            <BsMedium size={50} data-value="Medium" className={"fixed Medium"}/>
+          </div>
         </div>
       </div>
       <div className="h-screen w-screen"></div>
@@ -150,7 +143,7 @@ function animate() {
     xPercent: -20,
     scrollTrigger: { trigger: ".section2", scrub: 0.5 },
   });
-  
+
   gsap.to(".linedown", {
     xPercent: 20,
     scrollTrigger: { trigger: ".section2", scrub: 0.5 },
@@ -160,32 +153,53 @@ function animate() {
     xPercent: 50,
     scrollTrigger: { trigger: ".section2", scrub: 0.5 },
   });
-
-
-  gsap.set(".circle",{xPercent:-50,yPercent:-50})
-
-
-  console.log(ball);
-
-  // ReactDOM.findDOMNode.addEventListener("mousemove", e => {    
-  //   mouse.x = e.x;
-  //   mouse.y = e.y;  
-  // });
-
-  // gsap.ticker.add(() => {
-
-  //  adjust speed for higher refresh monitors  
-  //   pos.x += (mouse.x - pos.x);
-  //   pos.y += (mouse.y - pos.y);
-  //   xSet(pos.x);
-  //   ySet(pos.y);
-  // });
-
-
 }
 
-function oneTime(){
+function oneTime() {
+  const ball = document.querySelector(".circle");
+  const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  const mouse = { x: pos.x, y: pos.y };
+
+  const xSet = gsap.quickSetter(ball, "x", "px");
+  const ySet = gsap.quickSetter(ball, "y", "px");
+
+  const speed = 0.2;
+
+  gsap.set(".circle", { xPercent: -50, yPercent: -50 });
+
+  window.addEventListener("mousemove", (e) => {
+    mouse.x = e.x;
+    mouse.y = e.y;
+  });
+
+  gsap.ticker.add(() => {
+    //  adjust speed for higher refresh monietors
+
+    const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+    pos.x += (mouse.x - pos.x) * dt;
+    pos.y += (mouse.y - pos.y) * dt;
+    xSet(pos.x);
+    ySet(pos.y);
+  });
+
   
+  const contacts = gsap.utils.toArray(".Contacts"); 
+
+  
+
+  contacts.forEach((value,index) =>{
+    value.addEventListener("mouseenter",(value)=>{
+      
+      const element = document.querySelector(value.target.textContent);
+      console.log(element)
+      
+       
+    });
+    value.addEventListener("mouseleave",(value)=>{
+      const element = document.querySelector(value.target.textContent);
+
+    })
+  })
 }
 
 export default App;
