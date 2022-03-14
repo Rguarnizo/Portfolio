@@ -42,6 +42,9 @@ function App() {
   return (
     <div className="h-auto bg-[#fac9c3] body">
       <div className="circle fixed w-8 h-8 border-zinc-700 border-2 rounded-full pointer-events-none"></div>
+      <BsGithub size={50} data-value="Github" className={" fixed pointer-events-none Github  z-20"}/>
+      <BsLinkedin size={50} data-value="Linkedin" className={" fixed pointer-events-none Linkedin z-20"}/>
+      <BsMedium size={50} data-value="Medium" className={" fixed pointer-events-none Medium z-20"}/>
       <div className="h-screen w-screen absolute top-0 left-0 font-magilio hover:z-10">
         <Canvas className="h-full w-full">
           <ambientLight />
@@ -115,9 +118,7 @@ function App() {
                 <p className="Contacts ">.Medium</p>
               </a>
             </div>
-            <BsGithub size={50} data-value="Github" className={"fixed Github"}/>
-            <BsLinkedin size={50} data-value="Linkedin" className={"fixed Linkedin"}/>
-            <BsMedium size={50} data-value="Medium" className={"fixed Medium"}/>
+            
           </div>
         </div>
       </div>
@@ -163,7 +164,7 @@ function oneTime() {
   const xSet = gsap.quickSetter(ball, "x", "px");
   const ySet = gsap.quickSetter(ball, "y", "px");
 
-  const speed = 0.2;
+  const speed = 0.5;
 
   gsap.set(".circle", { xPercent: -50, yPercent: -50 });
 
@@ -187,18 +188,35 @@ function oneTime() {
 
   
 
+  
+
   contacts.forEach((value,index) =>{
     value.addEventListener("mouseenter",(value)=>{
       
       const element = document.querySelector(value.target.textContent);
-      console.log(element)
       
-       
+      
+      const xSetE = gsap.quickSetter(element, "x", "px");
+      const ySetE = gsap.quickSetter(element, "y", "px");
+      console.log(value.target.textContent);
+      gsap.to(value.target.textContent,{alpha:1})
+
+      gsap.ticker.add(() => {
+        //  adjust speed for higher refresh monietors
+        
+        const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+        pos.x += (mouse.x - pos.x) * dt;
+        pos.y += (mouse.y - pos.y) * dt;
+        xSetE(pos.x);
+        ySetE(pos.y);
+      });
+      
     });
     value.addEventListener("mouseleave",(value)=>{
-      const element = document.querySelector(value.target.textContent);
-
+      console.log(value.target.textContent);
+      gsap.to(value.target.textContent,{alpha:0})
     })
+    
   })
 }
 
