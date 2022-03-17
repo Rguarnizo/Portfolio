@@ -4,7 +4,8 @@ import { ReactDOM } from "react-dom";
 import "./App.css";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { BsGithub,BsLinkedin,BsMedium} from "react-icons/bs";
+import { BsGithub, BsLinkedin, BsMedium } from "react-icons/bs";
+import SplitLetters from "./components/SplitLetters"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,9 +43,21 @@ function App() {
   return (
     <div className="h-auto bg-[#fac9c3] body">
       <div className="circle fixed w-8 h-8 border-zinc-700 border-2 rounded-full pointer-events-none"></div>
-      <BsGithub size={50} data-value="Github" className={"fixed pointer-events-none Github  z-20 opacity-0"}/>
-      <BsLinkedin size={50} data-value="Linkedin" className={"fixed pointer-events-none Linkedin z-20 opacity-0"}/>
-      <BsMedium size={50} data-value="Medium" className={"fixed pointer-events-none Medium z-20 opacity-0"}/>
+      <BsGithub
+        size={50}
+        data-value="Github"
+        className={"fixed pointer-events-none Github  z-20 opacity-0"}
+      />
+      <BsLinkedin
+        size={50}
+        data-value="Linkedin"
+        className={"fixed pointer-events-none Linkedin z-20 opacity-0"}
+      />
+      <BsMedium
+        size={50}
+        data-value="Medium"
+        className={"fixed pointer-events-none Medium z-20 opacity-0"}
+      />
       <div className="h-screen w-screen absolute top-0 left-0 font-magilio hover:z-10">
         <Canvas className="h-full w-full">
           <ambientLight />
@@ -108,21 +121,25 @@ function App() {
 
             <div>Maybe we can build something together</div>
             <div className="flex justify-around">
-              <a target="_blank" href="https://www.linkedin.com/in/rudevio/" >
-                <p className="Contacts" >.Linkedin</p>
+              <a target="_blank" href="https://www.linkedin.com/in/rudevio/">
+                <p className="Contacts">.Linkedin</p>
               </a>
               <a target="_blank" href="https://www.github.com/rguarnizo">
                 <p className="Contacts ">.Github</p>
               </a>
-              <a target="_blank" href="https://www.medium.com/medium">
+              <a target="_blank" href="https://medium.com/@rguarnizo">
                 <p className="Contacts ">.Medium</p>
               </a>
             </div>
-            
           </div>
         </div>
       </div>
+      <div className="w-full  p-10 font-magilio text-8xl justify-center">       
+        <SplitLetters>Projects</SplitLetters>
+        <SplitLetters>Internet</SplitLetters>
+      </div>
       <div className="h-screen w-screen"></div>
+      
     </div>
   );
 }
@@ -183,41 +200,32 @@ function oneTime() {
     ySet(pos.y);
   });
 
-  
-  const contacts = gsap.utils.toArray(".Contacts"); 
+  const contacts = gsap.utils.toArray(".Contacts");
 
-  
-
-  
-
-  contacts.forEach((value,index) =>{
-    value.addEventListener("mouseenter",(value)=>{
-      
+  contacts.forEach((value, index) => {
+    value.addEventListener("mouseenter", (value) => {
       const element = document.querySelector(value.target.textContent);
-      
-      
+
       const xSetE = gsap.quickSetter(element, "x", "px");
       const ySetE = gsap.quickSetter(element, "y", "px");
       console.log(value.target.textContent);
-      gsap.to(value.target.textContent,{alpha:1})
+      gsap.to(value.target.textContent, { alpha: 1 });
 
       gsap.ticker.add(() => {
         //  adjust speed for higher refresh monietors
-        
+
         const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
         pos.x += (mouse.x - pos.x) * dt;
         pos.y += (mouse.y - pos.y) * dt;
         xSetE(pos.x);
         ySetE(pos.y);
       });
-      
     });
-    value.addEventListener("mouseleave",(value)=>{
+    value.addEventListener("mouseleave", (value) => {
       console.log(value.target.textContent);
-      gsap.to(value.target.textContent,{alpha:0})
-    })
-    
-  })
+      gsap.to(value.target.textContent, { alpha: 0 });
+    });
+  });
 }
 
 export default App;
