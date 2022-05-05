@@ -9,8 +9,7 @@ export default function SplitLetters(props) {
   useEffect(()=>{
     const word = gsap.utils.selector(l);
     const letters = gsap.utils.toArray(word(".letter"));
-    console.log(word);
-    gsap.from(letters,{yPercent:100,alpha:0,rotateY:6, stagger:0.05 ,scrollTrigger:{trigger: "word",toggleActions:"restart"}})
+    gsap.from(letters,{yPercent:100,alpha:0,rotateY:6, stagger:0.05 ,scrollTrigger:{trigger: ".word",markers:true,toggleActions:"restart restart restart restart",start:"-500px"}})
   },[])
 
   return (
