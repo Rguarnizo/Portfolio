@@ -6,6 +6,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import {useRef, useState, useEffect} from "react";
 import { BsGithub, BsLinkedin, BsMedium } from "react-icons/bs";
 import SplitLetters from "./components/SplitLetters"
+import Button from "./components/Button"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,11 +23,12 @@ function App() {
       <Name/>
       <AboutMe/>
       <InfoAboutMe/>
-      <div className="w-full  p-10 font-magilio text-8xl justify-center">       
+      {/* <div className="w-full  p-10 font-magilio text-8xl justify-center">       
         <SplitLetters>Projects</SplitLetters>
         <SplitLetters>Internet</SplitLetters>
-      </div>
-      <div className="h-screen w-screen"></div>
+      </div> */}
+      
+      <div className="h-[10vh] w-screen"></div>
     </div>
   );
 }
@@ -46,7 +48,7 @@ function InfoAboutMe(){
       <div className="">I like to build whatever kind of anything.</div>
 
       <div>Maybe we can build something together</div>
-      <div className="flex justify-around">
+      <div className="flex justify-center space-x-10">
         <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/rudevio/">
           <p className="Contacts">.Linkedin</p>
         </a>
@@ -56,7 +58,9 @@ function InfoAboutMe(){
         <a target="_blank" rel="noreferrer" href="https://medium.com/@rguarnizo">
           <p className="Contacts ">.Medium</p>
         </a>
+        
       </div>
+      <div className="w-max mx-auto"><Button> Download CV</Button></div>
     </div>
   </div>
 </div>

@@ -7,7 +7,12 @@
   @font-face {
   font-family: "Magilio";
   src: url("fonts/MagilioRegular.ttf") format("truetype");
+  }
+}
 
+@layer components{
+  .btn-primary {
+    @apply px-5 py-2 bg-[#fac9c3] hover:bg-[#eca49a] text-black font-magilio font-bold rounded-lg text-base w-full;
   }
 }
 
